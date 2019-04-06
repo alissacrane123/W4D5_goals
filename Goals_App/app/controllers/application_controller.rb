@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     !!(current_user)
   end 
 
+  def require_logout
+    redirect_to users_url if logged_in?
+  end
+
   def logout
     session[:session_token] = nil 
 
